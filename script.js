@@ -1,6 +1,13 @@
 function convertToSVG() {
     const input = document.getElementById('imageInput');
     const file = input.files[0];
+
+    // Check if a file has been selected
+    if (!file) {
+        alert('Please choose an image first.');
+        return;
+    }
+
     const reader = new FileReader();
 
     reader.onload = function(event) {
