@@ -64,6 +64,9 @@ function convertToSVG() {
             svgPreview.src = url;
             svgPreview.style.display = 'block';
         };
+        
+        
+        
 
         // Load the selected image file into the Image object
         img.src = event.target.result;
@@ -71,4 +74,13 @@ function convertToSVG() {
 
     // Read the selected file as a data URL
     reader.readAsDataURL(file);
+}
+function resetForm() {
+    //console.log //used for checking
+    // Clear the file input field
+    document.getElementById('imageInput').value = '';
+
+    document.getElementById('downloadLink').style.display = 'none';
+    document.getElementById('message').style.display = 'none';
+    document.getElementById('markupPreview').style.display = 'none';
 }
