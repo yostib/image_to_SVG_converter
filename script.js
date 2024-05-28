@@ -16,10 +16,8 @@ function convertToSVG() {
             // Get the original image dimensions
             const originalWidth = img.width;
             const originalHeight = img.height;
-            
-    
 
-            // Create a high-resolution canvas with the same dimensions as the image
+            // Create a high-resolution canvas with the same dimensions as the original image
             const canvas = document.createElement('canvas');
             canvas.width = originalWidth;
             canvas.height = originalHeight;
@@ -32,7 +30,7 @@ function convertToSVG() {
             // Draw the image onto the canvas
             ctx.drawImage(img, 0, 0, originalWidth, originalHeight);
 
-            // This is to Convert the canvas to a high-quality PNG data URL
+            // Convert the canvas to a high-quality PNG data URL
             const dataUrl = canvas.toDataURL('image/png', 1.0); // '1.0' represents the highest quality
 
             // Create an SVG string with the high-quality embedded image
@@ -48,8 +46,6 @@ function convertToSVG() {
 
             // Update the download link with the URL and set the file name
             const downloadLink = document.getElementById('downloadLink');
-            
-            //The href attribute of the downloadLink element is set to the Blob URL
             downloadLink.href = url;
             downloadLink.download = 'image.svg';
             downloadLink.style.display = 'inline-block';
@@ -58,6 +54,15 @@ function convertToSVG() {
             const message = document.getElementById('message');
             message.textContent = `The image quality is preserved with dimensions ${originalWidth}x${originalHeight}px.`;
             message.style.display = 'block';
+
+            // Display the SVG markup preview
+            const markupPreview = document.getElementById('markupPreview');
+            markupPreview.style.display = 'block';
+
+            // Display the image preview
+            const svgPreview = document.getElementById('svgPreview');
+            svgPreview.src = url;
+            svgPreview.style.display = 'block';
         };
 
         // Load the selected image file into the Image object
